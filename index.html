@@ -4005,6 +4005,132 @@ body.cmdm-inline-mode #cmdmManualToggleWrap{display:inline-flex!important}
 #controlProgress{display:none!important}
 #pasteArea~.button-list{grid-template-columns:minmax(0,1fr) minmax(0,2fr)!important}
 &lt;/style&gt;
+&lt;style id=&quot;we-dashboard-presentation-v1&quot;&gt;
+#dashboardDialog .dashboard-visual-grid{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr)!important;
+  grid-template-rows:minmax(0,1fr)!important;
+  gap:0!important;
+  height:260px!important;min-height:260px!important;max-height:260px!important;
+}
+#dashboardDialog .dashboard-ranking-card{
+  display:flex!important;flex-direction:column!important;gap:0!important;
+  width:100%!important;min-width:0!important;height:260px!important;
+  min-height:260px!important;max-height:260px!important;
+  padding:10px 14px 9px!important;overflow:hidden!important;
+  border:1px solid #d9e2ec!important;background:#fff!important;
+}
+#dashboardDialog .dashboard-overview-head{
+  display:grid!important;grid-template-columns:minmax(155px,.72fr) minmax(0,2.28fr)!important;
+  align-items:center!important;gap:14px!important;flex:0 0 auto!important;
+  min-height:49px!important;margin:0 0 7px!important;padding:0 0 7px!important;
+  border:0!important;border-bottom:1px solid #e5ebf1!important;background:transparent!important;
+}
+#dashboardDialog .dashboard-total-block{
+  display:flex!important;flex-direction:column!important;justify-content:center!important;
+  min-width:0!important;min-height:40px!important;padding-right:14px!important;
+  border-right:1px solid #e5ebf1!important;
+}
+#dashboardDialog .dashboard-total-block>span{
+  color:#748397!important;font:700 9px/1.2 system-ui,-apple-system,Segoe UI,sans-serif!important;
+  letter-spacing:.08em!important;white-space:nowrap!important;
+}
+#dashboardDialog .dashboard-total-block>strong{
+  margin-top:2px!important;color:#173e68!important;
+  font:750 25px/1.05 system-ui,-apple-system,Segoe UI,sans-serif!important;
+  font-variant-numeric:tabular-nums!important;letter-spacing:-.035em!important;
+}
+#dashboardDialog .dashboard-summary-metrics{
+  display:grid!important;grid-template-columns:repeat(auto-fit,minmax(100px,1fr))!important;
+  align-items:center!important;gap:12px!important;min-width:0!important;
+}
+#dashboardDialog .dashboard-summary-metric{
+  display:flex!important;flex-direction:column!important;justify-content:center!important;
+  gap:2px!important;min-width:0!important;
+}
+#dashboardDialog .dashboard-summary-metric>span{
+  color:#8794a3!important;font:700 8px/1.2 system-ui,-apple-system,Segoe UI,sans-serif!important;
+  letter-spacing:.07em!important;white-space:nowrap!important;
+}
+#dashboardDialog .dashboard-summary-metric>strong{
+  overflow:hidden!important;color:#263b52!important;
+  font:700 12px/1.2 system-ui,-apple-system,Segoe UI,sans-serif!important;
+  text-overflow:ellipsis!important;white-space:nowrap!important;
+}
+#dashboardDialog .dashboard-summary-metric>small{
+  color:#7a8795!important;font:500 9px/1.2 system-ui,-apple-system,Segoe UI,sans-serif!important;
+  white-space:nowrap!important;
+}
+#dashboardDialog .dashboard-region-metric>strong{color:#347f7b!important}
+#dashboardDialog .dashboard-rank-list{
+  display:grid!important;grid-template-columns:minmax(0,1fr)!important;
+  align-content:start!important;gap:2px!important;flex:1 1 auto!important;
+  min-width:0!important;min-height:0!important;overflow-x:hidden!important;overflow-y:auto!important;
+  padding:0 3px 0 0!important;scrollbar-width:thin!important;
+  scrollbar-color:#c7d2df transparent!important;
+}
+#dashboardDialog .dashboard-rank-row{
+  display:grid!important;grid-template-columns:minmax(125px,175px) minmax(0,1fr) minmax(82px,105px)!important;
+  align-items:center!important;gap:10px!important;min-width:0!important;min-height:16px!important;
+  padding:1px 5px!important;border:1px solid transparent!important;border-radius:3px!important;
+  background:transparent!important;
+}
+#dashboardDialog .dashboard-rank-row.is-top{
+  border-color:#e0ebf6!important;background:#f5f9fd!important;
+}
+#dashboardDialog .dashboard-rank-name{
+  display:flex!important;align-items:center!important;gap:6px!important;min-width:0!important;
+}
+#dashboardDialog .dashboard-rank-number{
+  flex:0 0 17px!important;color:#9aa7b5!important;
+  font:600 8px/1 system-ui,-apple-system,Segoe UI,sans-serif!important;
+  font-variant-numeric:tabular-nums!important;
+}
+#dashboardDialog .dashboard-rank-dot{
+  flex:0 0 7px!important;width:7px!important;height:7px!important;border-radius:50%!important;
+}
+#dashboardDialog .dashboard-rank-label{
+  overflow:hidden!important;color:#425367!important;
+  font:600 10px/1.15 system-ui,-apple-system,Segoe UI,sans-serif!important;
+  text-overflow:ellipsis!important;white-space:nowrap!important;
+}
+#dashboardDialog .dashboard-rank-row.is-top .dashboard-rank-label{color:#173e68!important;font-weight:750!important}
+#dashboardDialog .dashboard-rank-track{
+  position:relative!important;display:block!important;width:100%!important;height:6px!important;
+  overflow:hidden!important;border-radius:99px!important;background:#edf2f7!important;
+}
+#dashboardDialog .dashboard-rank-fill{
+  display:block!important;height:100%!important;min-width:2px!important;border-radius:99px!important;
+}
+#dashboardDialog .dashboard-rank-value{
+  display:flex!important;align-items:baseline!important;justify-content:flex-end!important;
+  gap:9px!important;min-width:0!important;font-variant-numeric:tabular-nums!important;
+  white-space:nowrap!important;
+}
+#dashboardDialog .dashboard-rank-value>strong{
+  color:#31465c!important;font:750 10px/1.1 system-ui,-apple-system,Segoe UI,sans-serif!important;
+}
+#dashboardDialog .dashboard-rank-value>span{
+  min-width:37px!important;color:#7d8a98!important;text-align:right!important;
+  font:600 9px/1.1 system-ui,-apple-system,Segoe UI,sans-serif!important;
+}
+#dashboardDialog .dashboard-rank-row.is-top .dashboard-rank-value>strong{color:#1769b0!important}
+#dashboardDialog .dashboard-rank-list::-webkit-scrollbar{width:5px!important}
+#dashboardDialog .dashboard-rank-list::-webkit-scrollbar-thumb{background:#c7d2df!important;border-radius:99px!important}
+@media(max-width:760px){
+  #dashboardDialog .dashboard-ranking-card{padding:9px 9px 8px!important}
+  #dashboardDialog .dashboard-overview-head{grid-template-columns:minmax(95px,.62fr) minmax(0,1.38fr)!important;gap:8px!important}
+  #dashboardDialog .dashboard-total-block{padding-right:8px!important}
+  #dashboardDialog .dashboard-total-block>strong{font-size:22px!important}
+  #dashboardDialog .dashboard-summary-metrics{gap:6px!important;grid-template-columns:repeat(auto-fit,minmax(76px,1fr))!important}
+  #dashboardDialog .dashboard-summary-metric>span{font-size:7px!important;letter-spacing:.035em!important}
+  #dashboardDialog .dashboard-summary-metric>strong{font-size:10px!important}
+  #dashboardDialog .dashboard-summary-metric>small{font-size:8px!important}
+  #dashboardDialog .dashboard-rank-row{grid-template-columns:minmax(88px,112px) minmax(0,1fr) minmax(70px,82px)!important;gap:5px!important;padding-inline:2px!important}
+  #dashboardDialog .dashboard-rank-label{font-size:9px!important}
+  #dashboardDialog .dashboard-rank-value{gap:5px!important}
+}
+&lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
 &lt;div class=&quot;app&quot;&gt;
@@ -10852,13 +10978,20 @@ const categoryNames = {
         syncDailyTotalButton();
         const types=dashboardCategoryItems(),total=types.reduce((sum,item)=&gt;sum+item.value,0);
         if(!types.length||!total){$(&quot;dashboardBody&quot;).innerHTML='&lt;div class=&quot;empty-output dashboard-empty&quot;&gt;No Copy to Excel data yet.&lt;/div&gt;';return;}
-        let angle=0;const pieStops=types.map(item=&gt;{const start=angle;angle+=item.value/total*360;return `${item.color} ${start.toFixed(2)}deg ${angle.toFixed(2)}deg`;}).join(&quot;,&quot;);
-        const legendHtml=types.map(item=&gt;{const share=item.value/total*100;return `&lt;div class=&quot;dashboard-legend-row&quot;&gt;&lt;span class=&quot;dashboard-legend-dot&quot; style=&quot;background:${item.color}&quot;&gt;&lt;/span&gt;&lt;span class=&quot;dashboard-legend-name&quot; title=&quot;${escapeHtml(item.name)}&quot;&gt;${escapeHtml(item.name)}&lt;/span&gt;&lt;span class=&quot;dashboard-legend-value&quot;&gt;${item.value}    ${share.toFixed(1)}%&lt;/span&gt;&lt;/div&gt;`;}).join(&quot;&quot;);
-        const maximum=Math.max(1,...types.map(item=&gt;item.value)),average=total/types.length,minimum=Math.min(...types.filter(item=&gt;item.value&gt;0).map(item=&gt;item.value)),averageHeight=Math.max(0,Math.round(average/maximum*156));
-        const barsHtml=types.map(item=&gt;{const height=Math.max(4,Math.round(item.value/maximum*156)),share=item.value/total*100,isMax=item.value===maximum,isMin=item.value===minimum,color=isMax?&quot;#1d4f91&quot;:isMin?&quot;#d9822b&quot;:item.value&gt;average?&quot;#2f7ed8&quot;:&quot;#aeb4bc&quot;;return `&lt;div class=&quot;dashboard-bar-item&quot;&gt;&lt;div class=&quot;dashboard-bar-stage&quot;&gt;&lt;div class=&quot;dashboard-single-bar&quot; style=&quot;height:${height}px;--dashboard-bar-color:${color}&quot; title=&quot;${escapeHtml(item.name)}: ${item.value} (${share.toFixed(1)}%)&quot;&gt;&lt;span class=&quot;dashboard-bar-number&quot;&gt;${item.value}&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;dashboard-bar-label&quot; title=&quot;${escapeHtml(item.name)}&quot;&gt;${escapeHtml(item.name)}&lt;/div&gt;&lt;div class=&quot;dashboard-bar-share&quot;&gt;${share.toFixed(1)}%&lt;/div&gt;&lt;/div&gt;`;}).join(&quot;&quot;);
+        const rankedTypes=[...types].sort((a,b)=&gt;b.value-a.value||a.name.localeCompare(b.name));
+        const topType=rankedTypes[0],topShare=topType.value/total*100;
         const canadaCount=visibleHistory().filter(isCanadaHistoryRecord).reduce((sum,record)=&gt;sum+Math.max(1,Number(record.count)||1),0);
         const canadaShare=total?canadaCount/total*100:0;
-        $(&quot;dashboardBody&quot;).innerHTML=`&lt;div class=&quot;dashboard-visual-grid&quot;&gt;&lt;section class=&quot;modal-card dashboard-visual-card&quot;&gt;&lt;h3&gt;Share of Total    ${total}&lt;/h3&gt;&lt;div class=&quot;dashboard-pie-body&quot;&gt;&lt;div class=&quot;dashboard-pie&quot; style=&quot;background:conic-gradient(${pieStops})&quot; role=&quot;img&quot; aria-label=&quot;Copy to Excel category share&quot;&gt;&lt;/div&gt;&lt;div class=&quot;dashboard-legend&quot;&gt;${legendHtml}${canadaCount?`&lt;div class=&quot;dashboard-legend-row&quot; title=&quot;Canada is a regional subset and is not added to category totals&quot;&gt;&lt;span class=&quot;dashboard-legend-dot&quot; style=&quot;background:#347F7B&quot;&gt;&lt;/span&gt;&lt;span class=&quot;dashboard-legend-name&quot;&gt;Canada Region&lt;/span&gt;&lt;span class=&quot;dashboard-legend-value&quot;&gt;${canadaCount}    ${canadaShare.toFixed(1)}%&lt;/span&gt;&lt;/div&gt;`:&quot;&quot;}&lt;/div&gt;&lt;/div&gt;&lt;/section&gt;&lt;section class=&quot;modal-card dashboard-visual-card&quot;&gt;&lt;h3&gt;Copy to Excel by Category&lt;/h3&gt;&lt;div class=&quot;dashboard-bars&quot;&gt;&lt;div class=&quot;dashboard-average-line&quot; style=&quot;--average-height:${averageHeight}px&quot;&gt;&lt;span&gt;AVG ${average.toFixed(1)}&lt;/span&gt;&lt;/div&gt;${barsHtml}&lt;/div&gt;&lt;/section&gt;&lt;/div&gt;`;
+        const summaryMetrics=[
+          `&lt;div class=&quot;dashboard-summary-metric&quot;&gt;&lt;span&gt;ACTIVE CATEGORIES&lt;/span&gt;&lt;strong&gt;${rankedTypes.length}&lt;/strong&gt;&lt;/div&gt;`,
+          `&lt;div class=&quot;dashboard-summary-metric&quot;&gt;&lt;span&gt;TOP CATEGORY&lt;/span&gt;&lt;strong&gt;${escapeHtml(topType.name)}&lt;/strong&gt;&lt;small&gt;${topType.value} · ${topShare.toFixed(1)}%&lt;/small&gt;&lt;/div&gt;`
+        ];
+        if(canadaCount)summaryMetrics.push(`&lt;div class=&quot;dashboard-summary-metric dashboard-region-metric&quot; title=&quot;Canada is a regional subset and is not added to category totals&quot;&gt;&lt;span&gt;CANADA REGION&lt;/span&gt;&lt;strong&gt;${canadaCount}&lt;/strong&gt;&lt;small&gt;${canadaShare.toFixed(1)}% of total&lt;/small&gt;&lt;/div&gt;`);
+        const rankingHtml=rankedTypes.map((item,index)=&gt;{
+          const share=item.value/total*100;
+          return `&lt;div class=&quot;dashboard-rank-row${index===0?' is-top':''}&quot; title=&quot;${escapeHtml(item.name)}: ${item.value} (${share.toFixed(1)}%)&quot;&gt;&lt;div class=&quot;dashboard-rank-name&quot;&gt;&lt;span class=&quot;dashboard-rank-number&quot;&gt;${String(index+1).padStart(2,&quot;0&quot;)}&lt;/span&gt;&lt;span class=&quot;dashboard-rank-dot&quot; style=&quot;background:${item.color}&quot;&gt;&lt;/span&gt;&lt;span class=&quot;dashboard-rank-label&quot;&gt;${escapeHtml(item.name)}&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;dashboard-rank-track&quot;&gt;&lt;span class=&quot;dashboard-rank-fill&quot; style=&quot;width:${share.toFixed(2)}%;background:${item.color}&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;dashboard-rank-value&quot;&gt;&lt;strong&gt;${item.value}&lt;/strong&gt;&lt;span&gt;${share.toFixed(1)}%&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;`;
+        }).join(&quot;&quot;);
+        $(&quot;dashboardBody&quot;).innerHTML=`&lt;div class=&quot;dashboard-visual-grid&quot;&gt;&lt;section class=&quot;modal-card dashboard-visual-card dashboard-ranking-card&quot;&gt;&lt;div class=&quot;dashboard-overview-head&quot;&gt;&lt;div class=&quot;dashboard-total-block&quot;&gt;&lt;span&gt;ALL-TIME TOTAL&lt;/span&gt;&lt;strong&gt;${total.toLocaleString(&quot;en-US&quot;)}&lt;/strong&gt;&lt;/div&gt;&lt;div class=&quot;dashboard-summary-metrics&quot;&gt;${summaryMetrics.join(&quot;&quot;)}&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;dashboard-rank-list&quot; aria-label=&quot;Copy to Excel category ranking&quot;&gt;${rankingHtml}&lt;/div&gt;&lt;/section&gt;&lt;/div&gt;`;
       }
 
       function dailyHistoryTotals(){const totals=new Map();visibleHistory().forEach(record=&gt;{const date=getEasternDateFromHistoryTime(record);if(!date)return;totals.set(date,(totals.get(date)||0)+Math.max(1,Number(record.count)||String(record.text||&quot;&quot;).split(&quot;\n&quot;).filter(Boolean).length));});return Array.from(totals,([date,value])=&gt;({date,value})).sort((a,b)=&gt;a.date.localeCompare(b.date));}
