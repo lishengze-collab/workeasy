@@ -3596,6 +3596,27 @@ html body #quickClockDialog .qc-actions &gt; #qcAuto{
   margin:0!important;
   box-sizing:border-box!important;
 }
+html body #quickClockDialog,
+html body #quickClockDialog .qc-head,
+html body #quickClockDialog .qc-body,
+html body #quickClockDialog .qc-field,
+html body #quickClockDialog .qc-status,
+html body #quickClockDialog .qc-time-picker,
+html body #quickClockDialog .qc-time-picker *{
+  -webkit-user-select:none!important;user-select:none!important;
+  -webkit-touch-callout:none!important;
+}
+html body #quickClockDialog .qc-time-picker{
+  display:grid!important;grid-template-columns:minmax(0,1fr) 10px minmax(0,1fr)!important;
+  align-items:center!important;gap:4px!important;width:100%!important;min-width:0!important;
+}
+html body #quickClockDialog .qc-time-picker select{
+  width:100%!important;min-width:0!important;height:28px!important;min-height:28px!important;
+  padding:3px 5px!important;text-align:center!important;font-variant-numeric:tabular-nums!important;
+  cursor:pointer!important;touch-action:manipulation!important;
+}
+html body #quickClockDialog .qc-time-separator{text-align:center!important;color:#526273!important;font-weight:800!important}
+html body #quickClockDialog button{touch-action:manipulation!important;-webkit-tap-highlight-color:transparent!important}
 &lt;/style&gt;&lt;style id=&quot;we-cmdm-exit-preserve-final&quot;&gt;
 html body .paste-header-actions &gt; #cmdmExitButton{
  width:54px!important;min-width:54px!important;max-width:54px!important;
@@ -4060,7 +4081,7 @@ body.cmdm-inline-mode #cmdmManualToggleWrap{display:inline-flex!important}
 &lt;div class=&quot;qc-body&quot;&gt;
 &lt;div class=&quot;qc-grid&quot;&gt;
 &lt;label class=&quot;qc-field&quot;&gt;DATE&lt;input id=&quot;qcDate&quot; type=&quot;date&quot;/&gt;&lt;/label&gt;
-&lt;label class=&quot;qc-field&quot;&gt;TIME&lt;input id=&quot;qcTime&quot; type=&quot;time&quot;/&gt;&lt;/label&gt;
+&lt;label class=&quot;qc-field&quot;&gt;TIME&lt;div class=&quot;qc-time-picker&quot;&gt;&lt;select aria-label=&quot;Hour&quot; id=&quot;qcHour&quot;&gt;&lt;/select&gt;&lt;span class=&quot;qc-time-separator&quot;&gt;:&lt;/span&gt;&lt;select aria-label=&quot;Minute&quot; id=&quot;qcMinute&quot;&gt;&lt;/select&gt;&lt;/div&gt;&lt;/label&gt;
 &lt;label class=&quot;qc-field qc-season&quot;&gt;SEASON&lt;select id=&quot;qcSeason&quot;&gt;&lt;option value=&quot;auto&quot;&gt;AUTO DST&lt;/option&gt;&lt;option value=&quot;summer&quot;&gt;SUMMER 21:00&lt;/option&gt;&lt;option value=&quot;winter&quot;&gt;WINTER 22:00&lt;/option&gt;&lt;/select&gt;&lt;/label&gt;
 &lt;/div&gt;
 &lt;div class=&quot;qc-status&quot; id=&quot;qcStatus&quot;&gt;Enter a time or use IN for the current local time.&lt;/div&gt;
@@ -11385,7 +11406,7 @@ let batchRows=[];
       function fusionTime(zone){return new Intl.DateTimeFormat(&quot;en-GB&quot;,{timeZone:zone,hour:&quot;2-digit&quot;,minute:&quot;2-digit&quot;,hour12:false}).format(new Date());}
       function fusionLocalDate(){const d=new Date(),p=n=&gt;String(n).padStart(2,&quot;0&quot;);return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}`;}
       function applyEstimatedStatus(data={}){fusionEstimatedStatus={hasRecord:!!data.hasRecord,date:String(data.date||&quot;&quot;),time:String(data.time||&quot;&quot;),targetTimestamp:Number(data.targetTimestamp)||0};const es=$(&quot;recordTimeES&quot;);if(es)es.textContent=`ES ${fusionEstimatedStatus.hasRecord&amp;&amp;/^\d{2}:\d{2}$/.test(fusionEstimatedStatus.time)?fusionEstimatedStatus.time:&quot;--:--&quot;}`;updateFusionCountdown();}
-      function updateFusionCountdown(){const el=$(&quot;recordCountdown&quot;);if(!el)return;const s=fusionEstimatedStatus,target=Number(s.targetTimestamp),now=Date.now();if(!s.hasRecord||!Number.isFinite(target)||target&lt;=0||!/^\d{2}:\d{2}$/.test(s.time)){el.textContent=&quot;C.D --:--&quot;;return;}const delta=target-now;if(delta&gt;=0){const minutes=Math.ceil(delta/60000);el.textContent=`C.D ${String(Math.floor(minutes/60)).padStart(2,&quot;0&quot;)}:${String(minutes%60).padStart(2,&quot;0&quot;)}`;return;}const overdue=Math.floor((-delta)/60000);if(overdue&lt;=60){el.textContent=`C.D -${String(Math.floor(overdue/60)).padStart(2,&quot;0&quot;)}:${String(overdue%60).padStart(2,&quot;0&quot;)}`;return;}el.textContent=&quot;C.D --:--&quot;;}
+      function updateFusionCountdown(){const el=$(&quot;recordCountdown&quot;);if(!el)return;const s=fusionEstimatedStatus,target=Number(s.targetTimestamp),now=Date.now();if(!s.hasRecord||!Number.isFinite(target)||target&lt;=0||!/^\d{2}:\d{2}$/.test(s.time)){el.textContent=&quot;C.D --:--&quot;;return;}const delta=target-now,minutes=Math.ceil(Math.abs(delta)/60000),hours=String(Math.floor(minutes/60)).padStart(2,&quot;0&quot;),mins=String(minutes%60).padStart(2,&quot;0&quot;),sign=delta&lt;0?&quot;-&quot;:&quot;&quot;;el.textContent=`C.D ${sign}${hours}:${mins}`;}
       function updateFusionWorldTimes(){const et=$(&quot;recordTimeET&quot;),pt=$(&quot;recordTimePT&quot;),bj=$(&quot;recordTimeBJ&quot;);if(et)et.textContent=`ET ${fusionTime(&quot;America/New_York&quot;)}`;if(pt)pt.textContent=`PT ${fusionTime(&quot;America/Los_Angeles&quot;)}`;if(bj)bj.textContent=`BJ ${fusionTime(&quot;Asia/Shanghai&quot;)}`;updateFusionCountdown();parent.postMessage({kind:&quot;estimated-out-status-request&quot;},&quot;*&quot;);}
       let fusionMinuteClock=0;
       let fusionMinuteAlignTimer=0;
@@ -12639,16 +12660,19 @@ document.addEventListener('keydown',e=&gt;{if(document.body.classList.contains('
  const dlg=document.getElementById('quickClockDialog');
  if(!old||!dlg)return;
  const btn=old.cloneNode(true); old.replaceWith(btn);
- const date=document.getElementById('qcDate'),time=document.getElementById('qcTime'),season=document.getElementById('qcSeason'),status=document.getElementById('qcStatus');
+ const date=document.getElementById('qcDate'),hour=document.getElementById('qcHour'),minute=document.getElementById('qcMinute'),season=document.getElementById('qcSeason'),status=document.getElementById('qcStatus');
  const pad=n=&gt;String(n).padStart(2,'0');
- const setNow=()=&gt;{const n=new Date();date.value=`${n.getFullYear()}-${pad(n.getMonth()+1)}-${pad(n.getDate())}`;time.value=`${pad(n.getHours())}:${pad(n.getMinutes())}`};
+ const fillOptions=(select,count)=&gt;{if(!select)return;select.innerHTML=Array.from({length:count},(_,i)=&gt;`&lt;option value=&quot;${pad(i)}&quot;&gt;${pad(i)}&lt;/option&gt;`).join('')};
+ fillOptions(hour,24);fillOptions(minute,60);
+ const selectedTime=()=&gt;`${pad(Number(hour?.value||0))}:${pad(Number(minute?.value||0))}`;
+ const setNow=()=&gt;{const n=new Date();date.value=`${n.getFullYear()}-${pad(n.getMonth()+1)}-${pad(n.getDate())}`;if(hour)hour.value=pad(n.getHours());if(minute)minute.value=pad(n.getMinutes())};
  const open=()=&gt;{setNow();status.textContent='Enter a time or use IN for the current local time.';dlg.setAttribute('open','');};
  const close=()=&gt;dlg.removeAttribute('open');
  btn.addEventListener('click',e=&gt;{e.preventDefault();e.stopPropagation();dlg.hasAttribute('open')?close():open()});
  document.getElementById('qcClose')?.addEventListener('click',close);
  const send=data=&gt;{parent.postMessage(data,'*');return true};
  document.getElementById('qcManual')?.addEventListener('click',()=&gt;{setNow();send({kind:'estimated-out-quick-clock',mode:season.value});status.textContent='Current time submitted.';setTimeout(close,180)});
- document.getElementById('qcAuto')?.addEventListener('click',()=&gt;{if(!date.value||!time.value){status.textContent='Please enter both date and time.';return}send({kind:'estimated-out-manual-clock',date:date.value,time:time.value,mode:season.value});status.textContent='Manual clock-in saved.';setTimeout(close,180)});
+ document.getElementById('qcAuto')?.addEventListener('click',()=&gt;{if(!date.value||!hour?.value||!minute?.value){status.textContent='Please select both date and time.';return}send({kind:'estimated-out-manual-clock',date:date.value,time:selectedTime(),mode:season.value});status.textContent='Manual clock-in saved.';setTimeout(close,180)});
 })();&lt;/script&gt;
 &lt;script id=&quot;cmdm-manual-stable-controller-v3&quot;&gt;
 (()=&gt;{
@@ -20586,7 +20610,7 @@ $('rows').ondblclick=async e=&gt;{const b=e.target.closest('[data-delete]');if(!
 $('calPrev').onclick=()=&gt;{calendarCursor=new Date(calendarCursor.getFullYear(),calendarCursor.getMonth()-1,1);renderCalendar()};
 $('calNext').onclick=()=&gt;{calendarCursor=new Date(calendarCursor.getFullYear(),calendarCursor.getMonth()+1,1);renderCalendar()};
 $('export').onclick=()=&gt;{const esc=v=&gt;String(v).replace(/[&amp;&lt;&gt;]/g,c=&gt;({'&amp;':'&amp;amp;','&lt;':'&amp;lt;','&gt;':'&amp;gt;'}[c]));const rows=[['Date','Act. In','Est. Out','Late time'],...records.map(r=&gt;{const x=enrich(r);return[fmtDate(r.date),fmtTime(r.actualIn),x.estimatedOut,x.lateMinutes.toFixed(2)]})];const xml=`&lt;?xml version=&quot;1.0&quot;?&gt;&lt;Workbook xmlns=&quot;urn:schemas-microsoft-com:office:spreadsheet&quot; xmlns:ss=&quot;urn:schemas-microsoft-com:office:spreadsheet&quot;&gt;&lt;Worksheet ss:Name=&quot;Time Records&quot;&gt;&lt;Table&gt;${rows.map((row,i)=&gt;`&lt;Row&gt;${row.map((v,j)=&gt;`&lt;Cell&gt;&lt;Data ss:Type=&quot;${j===3&amp;&amp;i&gt;0?'Number':'String'}&quot;&gt;${esc(v)}&lt;/Data&gt;&lt;/Cell&gt;`).join('')}&lt;/Row&gt;`).join('')}&lt;/Table&gt;&lt;/Worksheet&gt;&lt;/Workbook&gt;`;const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([xml],{type:'application/vnd.ms-excel'}));a.download='estimated-out-time.xls';a.click();setTimeout(()=&gt;URL.revokeObjectURL(a.href),1000)};
-function currentEstimatedStatus(){const r=officialRecord(),x=r?calculate(r.date,r.actualIn):null,p=x?splitEstimatedOut(x.out):null;return{hasRecord:!!p,date:p?p.date:'--',time:p?p.time:'--:--',targetTimestamp:x&amp;&amp;x.out instanceof Date&amp;&amp;!Number.isNaN(x.out.getTime())?x.out.getTime():0}}
+function currentEstimatedStatus(){const r=[...records].sort((a,b)=&gt;{const ta=Date.parse(a.updatedAt||a.createdAt||0)||0,tb=Date.parse(b.updatedAt||b.createdAt||0)||0;return tb-ta||String(b.date).localeCompare(String(a.date))})[0]||null,x=r?calculate(r.date,r.actualIn):null,p=x?splitEstimatedOut(x.out):null;return{hasRecord:!!p,date:p?p.date:'--',time:p?p.time:'--:--',targetTimestamp:x&amp;&amp;x.out instanceof Date&amp;&amp;!Number.isNaN(x.out.getTime())?x.out.getTime():0}}
 function publishEstimatedStatus(){parent.postMessage({kind:'estimated-out-status',...currentEstimatedStatus()},'*')}
 async function integrationQuickClockIn(){const now=new Date(),date=fmtDateInput(now),time=`${pad(now.getHours())}:${pad(now.getMinutes())}`;await save(date,time,'easy-copy-quick-clock');publishEstimatedStatus()}
 $('returnEasy').addEventListener('click',event=&gt;{if(event.detail===1){event.currentTarget.classList.add('single-click-hint');clearTimeout(event.currentTarget._returnHint);event.currentTarget._returnHint=setTimeout(()=&gt;event.currentTarget.classList.remove('single-click-hint'),550)}});$('returnEasy').addEventListener('dblclick',event=&gt;{event.preventDefault();event.stopPropagation();parent.postMessage({kind:'fusion-workspace-switch',target:'easy'},'*')});
