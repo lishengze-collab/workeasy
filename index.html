@@ -4131,6 +4131,149 @@ body.cmdm-inline-mode #cmdmManualToggleWrap{display:inline-flex!important}
   #dashboardDialog .dashboard-rank-value{gap:5px!important}
 }
 &lt;/style&gt;
+
+&lt;style id=&quot;we-dashboard-presentation-v2&quot;&gt;
+#dashboardDialog .dashboard-visual-grid{
+  display:grid!important;grid-template-columns:minmax(0,1fr)!important;
+  grid-template-rows:minmax(0,1fr)!important;gap:0!important;
+  height:260px!important;min-height:260px!important;max-height:260px!important;
+}
+#dashboardDialog .dashboard-ranking-card{
+  display:flex!important;flex-direction:column!important;gap:0!important;
+  width:100%!important;min-width:0!important;height:260px!important;
+  min-height:260px!important;max-height:260px!important;
+  padding:10px 14px 8px!important;overflow:hidden!important;
+  border:1px solid #d9e2ec!important;border-radius:3px!important;
+  background:#fff!important;box-shadow:none!important;
+}
+#dashboardDialog .dashboard-overview-head{
+  display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,3fr)!important;
+  align-items:center!important;gap:0!important;flex:0 0 auto!important;
+  min-height:50px!important;margin:0 0 6px!important;padding:0 0 7px!important;
+  border:0!important;border-bottom:1px solid #e5ebf1!important;background:#fff!important;
+}
+#dashboardDialog .dashboard-total-block{
+  display:flex!important;flex-direction:column!important;justify-content:center!important;
+  gap:3px!important;min-width:0!important;min-height:40px!important;
+  margin:0!important;padding:0 12px 0 2px!important;
+  border:0!important;border-right:1px solid #e5ebf1!important;border-radius:0!important;
+  background:transparent!important;box-shadow:none!important;
+}
+#dashboardDialog .dashboard-summary-metrics{
+  display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  align-items:center!important;gap:0!important;min-width:0!important;
+}
+#dashboardDialog .dashboard-summary-metric{
+  display:flex!important;flex-direction:column!important;justify-content:center!important;
+  gap:3px!important;min-width:0!important;min-height:40px!important;
+  margin:0!important;padding:0 10px!important;border:0!important;border-radius:0!important;
+  background:transparent!important;box-shadow:none!important;
+}
+#dashboardDialog .dashboard-summary-metrics .dashboard-summary-metric:not(:last-child){
+  border-right:1px solid #edf1f5!important;
+}
+#dashboardDialog .dashboard-summary-metric&gt;span{
+  overflow:hidden!important;color:#748397!important;
+  font:650 9px/1.2 system-ui,-apple-system,Segoe UI,sans-serif!important;
+  letter-spacing:.015em!important;text-transform:none!important;
+  text-overflow:ellipsis!important;white-space:nowrap!important;
+}
+#dashboardDialog .dashboard-summary-metric&gt;strong{
+  overflow:hidden!important;color:#263b52!important;
+  font:750 18px/1.08 system-ui,-apple-system,Segoe UI,sans-serif!important;
+  font-variant-numeric:tabular-nums!important;letter-spacing:-.02em!important;
+  text-overflow:ellipsis!important;white-space:nowrap!important;
+}
+#dashboardDialog .dashboard-summary-metric&gt;small{
+  color:#7a8795!important;font:500 8px/1.15 system-ui,-apple-system,Segoe UI,sans-serif!important;
+  white-space:nowrap!important;
+}
+#dashboardDialog .dashboard-region-metric&gt;strong{color:#347f7b!important}
+#dashboardDialog .dashboard-rank-header,
+#dashboardDialog .dashboard-rank-row{
+  display:grid!important;
+  grid-template-columns:minmax(120px,1fr) repeat(3,minmax(0,1.75fr))!important;
+  align-items:center!important;gap:8px!important;min-width:0!important;
+}
+#dashboardDialog .dashboard-rank-header{
+  flex:0 0 auto!important;min-height:18px!important;margin:0 0 4px!important;
+  padding:0 5px 2px!important;border-bottom:1px solid #edf1f5!important;
+  color:#8794a3!important;font:700 8px/1.15 system-ui,-apple-system,Segoe UI,sans-serif!important;
+  letter-spacing:.04em!important;text-transform:uppercase!important;
+}
+#dashboardDialog .dashboard-rank-header&gt;span:not(:first-child){padding-left:8px!important}
+#dashboardDialog .dashboard-rank-list{
+  display:grid!important;grid-template-columns:minmax(0,1fr)!important;
+  grid-auto-rows:minmax(24px,1fr)!important;align-content:stretch!important;
+  gap:3px!important;flex:1 1 auto!important;min-width:0!important;min-height:0!important;
+  overflow-x:hidden!important;overflow-y:auto!important;padding:0 3px 0 0!important;
+  scrollbar-width:thin!important;scrollbar-color:#c7d2df transparent!important;
+}
+#dashboardDialog .dashboard-rank-row{
+  min-height:24px!important;padding:1px 5px!important;
+  border:0!important;border-bottom:1px solid #f0f3f6!important;border-radius:0!important;
+  background:#fff!important;
+}
+#dashboardDialog .dashboard-rank-row.is-top{background:#f8fafc!important}
+#dashboardDialog .dashboard-rank-name{
+  display:flex!important;align-items:center!important;gap:7px!important;
+  min-width:0!important;padding-right:4px!important;
+}
+#dashboardDialog .dashboard-rank-dot{
+  flex:0 0 7px!important;width:7px!important;height:7px!important;border-radius:50%!important;
+}
+#dashboardDialog .dashboard-rank-label{
+  overflow:hidden!important;color:#34485e!important;
+  font:650 10px/1.2 system-ui,-apple-system,Segoe UI,sans-serif!important;
+  text-overflow:ellipsis!important;white-space:nowrap!important;
+}
+#dashboardDialog .dashboard-rank-segment{
+  display:flex!important;align-items:center!important;gap:8px!important;
+  min-width:0!important;padding-left:8px!important;border-left:1px solid #edf1f5!important;
+}
+#dashboardDialog .dashboard-rank-track{
+  position:relative!important;display:block!important;flex:1 1 auto!important;
+  width:auto!important;min-width:18px!important;height:9px!important;overflow:hidden!important;
+  border-radius:2px!important;background:#edf2f7!important;
+}
+#dashboardDialog .dashboard-rank-fill{
+  display:block!important;height:100%!important;min-width:0!important;
+  border-radius:1px!important;transition:width .2s ease!important;
+}
+#dashboardDialog .dashboard-rank-value{
+  display:flex!important;align-items:baseline!important;justify-content:flex-end!important;
+  gap:5px!important;flex:0 0 62px!important;width:62px!important;min-width:0!important;
+  font-variant-numeric:tabular-nums!important;white-space:nowrap!important;
+}
+#dashboardDialog .dashboard-rank-value&gt;strong{
+  color:#31465c!important;font:750 9px/1.1 system-ui,-apple-system,Segoe UI,sans-serif!important;
+}
+#dashboardDialog .dashboard-rank-value&gt;span{
+  min-width:32px!important;color:#7d8a98!important;text-align:right!important;
+  font:600 8px/1.1 system-ui,-apple-system,Segoe UI,sans-serif!important;
+}
+#dashboardDialog .dashboard-rank-row.is-top .dashboard-rank-label{color:#173e68!important;font-weight:750!important}
+#dashboardDialog .dashboard-rank-list::-webkit-scrollbar{width:5px!important}
+#dashboardDialog .dashboard-rank-list::-webkit-scrollbar-thumb{background:#c7d2df!important;border-radius:2px!important}
+@media(max-width:760px){
+  #dashboardDialog .dashboard-ranking-card{padding:9px 8px 7px!important}
+  #dashboardDialog .dashboard-overview-head{grid-template-columns:minmax(75px,.85fr) minmax(0,3.15fr)!important;gap:0!important}
+  #dashboardDialog .dashboard-total-block{padding-right:7px!important}
+  #dashboardDialog .dashboard-summary-metrics{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+  #dashboardDialog .dashboard-summary-metric{padding:0 5px!important;gap:3px!important}
+  #dashboardDialog .dashboard-summary-metric&gt;span{font-size:7px!important;letter-spacing:0!important}
+  #dashboardDialog .dashboard-summary-metric&gt;strong{font-size:14px!important}
+  #dashboardDialog .dashboard-rank-header,
+  #dashboardDialog .dashboard-rank-row{grid-template-columns:minmax(65px,.85fr) repeat(3,minmax(0,1.35fr))!important;gap:4px!important}
+  #dashboardDialog .dashboard-rank-header{font-size:7px!important;letter-spacing:0!important}
+  #dashboardDialog .dashboard-rank-segment{gap:3px!important;padding-left:3px!important}
+  #dashboardDialog .dashboard-rank-track{min-width:10px!important;height:7px!important}
+  #dashboardDialog .dashboard-rank-value{flex-basis:38px!important;width:38px!important;gap:2px!important}
+  #dashboardDialog .dashboard-rank-value&gt;strong{font-size:8px!important}
+  #dashboardDialog .dashboard-rank-value&gt;span{min-width:22px!important;font-size:7px!important}
+  #dashboardDialog .dashboard-rank-label{font-size:8px!important}
+}
+&lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
 &lt;div class=&quot;app&quot;&gt;
@@ -10976,24 +11119,41 @@ const categoryNames = {
       function renderDashboard(){
         dashboardDailyMode=false;
         syncDailyTotalButton();
-        const types=dashboardCategoryItems(),total=types.reduce((sum,item)=&gt;sum+item.value,0);
+        const types=dashboardCategoryItems(),total=types.reduce((sum,item)=>sum+item.value,0);
         if(!types.length||!total){$(&quot;dashboardBody&quot;).innerHTML='&lt;div class=&quot;empty-output dashboard-empty&quot;&gt;No Copy to Excel data yet.&lt;/div&gt;';return;}
-        const rankedTypes=[...types].sort((a,b)=&gt;b.value-a.value||a.name.localeCompare(b.name));
-        const topType=rankedTypes[0],topShare=topType.value/total*100;
-        const canadaCount=visibleHistory().filter(isCanadaHistoryRecord).reduce((sum,record)=&gt;sum+Math.max(1,Number(record.count)||1),0);
+        const rankedTypes=[...types].sort((a,b)=>b.value-a.value||a.name.localeCompare(b.name));
+        const today=getLocalToday(),month=today.slice(0,7),historyRows=visibleHistory();
+        const monthByType=Object.create(null),dayByType=Object.create(null);
+        historyRows.forEach(record=>{
+          const date=getEasternDateFromHistoryTime(record);
+          const rawType=String(record.typeKey||Object.keys(categoryNames).find(key=>String(categoryNames[key]).toLowerCase()===String(record.type||&quot;&quot;).toLowerCase())||&quot;&quot;).toLowerCase();
+          const key=rawType===&quot;fl&quot;?&quot;flooring&quot;:rawType;
+          if(!key||!date)return;
+          const count=Math.max(1,Number(record.count)||String(record.text||&quot;&quot;).split(&quot;\\n&quot;).filter(Boolean).length);
+          if(date.slice(0,7)===month)monthByType[key]=(monthByType[key]||0)+count;
+          if(date===today)dayByType[key]=(dayByType[key]||0)+count;
+        });
+        const monthTotal=rankedTypes.reduce((sum,item)=>sum+(monthByType[item.key]||0),0);
+        const dayTotal=rankedTypes.reduce((sum,item)=>sum+(dayByType[item.key]||0),0);
+        const canadaCount=historyRows.filter(isCanadaHistoryRecord).reduce((sum,record)=>sum+Math.max(1,Number(record.count)||1),0);
         const canadaShare=total?canadaCount/total*100:0;
         const summaryMetrics=[
-          `&lt;div class=&quot;dashboard-summary-metric&quot;&gt;&lt;span&gt;ACTIVE CATEGORIES&lt;/span&gt;&lt;strong&gt;${rankedTypes.length}&lt;/strong&gt;&lt;/div&gt;`,
-          `&lt;div class=&quot;dashboard-summary-metric&quot;&gt;&lt;span&gt;TOP CATEGORY&lt;/span&gt;&lt;strong&gt;${escapeHtml(topType.name)}&lt;/strong&gt;&lt;small&gt;${topType.value} · ${topShare.toFixed(1)}%&lt;/small&gt;&lt;/div&gt;`
+          `&lt;div class=&quot;dashboard-summary-metric&quot;&gt;&lt;span&gt;Current Month Counts&lt;/span&gt;&lt;strong&gt;${monthTotal.toLocaleString(&quot;en-US&quot;)}&lt;/strong&gt;&lt;/div&gt;`,
+          `&lt;div class=&quot;dashboard-summary-metric&quot;&gt;&lt;span&gt;Current Day Counts&lt;/span&gt;&lt;strong&gt;${dayTotal.toLocaleString(&quot;en-US&quot;)}&lt;/strong&gt;&lt;/div&gt;`,
+          `&lt;div class=&quot;dashboard-summary-metric dashboard-region-metric&quot; title=&quot;Canada is a regional subset and is not added to category totals&quot;&gt;&lt;span&gt;Canada Region&lt;/span&gt;&lt;strong&gt;${canadaCount.toLocaleString(&quot;en-US&quot;)}&lt;/strong&gt;&lt;small&gt;${canadaShare.toFixed(1)}% of total&lt;/small&gt;&lt;/div&gt;`
         ];
-        if(canadaCount)summaryMetrics.push(`&lt;div class=&quot;dashboard-summary-metric dashboard-region-metric&quot; title=&quot;Canada is a regional subset and is not added to category totals&quot;&gt;&lt;span&gt;CANADA REGION&lt;/span&gt;&lt;strong&gt;${canadaCount}&lt;/strong&gt;&lt;small&gt;${canadaShare.toFixed(1)}% of total&lt;/small&gt;&lt;/div&gt;`);
-        const rankingHtml=rankedTypes.map((item,index)=&gt;{
-          const share=item.value/total*100;
-          return `&lt;div class=&quot;dashboard-rank-row${index===0?' is-top':''}&quot; title=&quot;${escapeHtml(item.name)}: ${item.value} (${share.toFixed(1)}%)&quot;&gt;&lt;div class=&quot;dashboard-rank-name&quot;&gt;&lt;span class=&quot;dashboard-rank-number&quot;&gt;${String(index+1).padStart(2,&quot;0&quot;)}&lt;/span&gt;&lt;span class=&quot;dashboard-rank-dot&quot; style=&quot;background:${item.color}&quot;&gt;&lt;/span&gt;&lt;span class=&quot;dashboard-rank-label&quot;&gt;${escapeHtml(item.name)}&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;dashboard-rank-track&quot;&gt;&lt;span class=&quot;dashboard-rank-fill&quot; style=&quot;width:${share.toFixed(2)}%;background:${item.color}&quot;&gt;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;dashboard-rank-value&quot;&gt;&lt;strong&gt;${item.value}&lt;/strong&gt;&lt;span&gt;${share.toFixed(1)}%&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;`;
+        const rankingHeader=`&lt;div class=&quot;dashboard-rank-header&quot;&gt;&lt;span&gt;Category&lt;/span&gt;&lt;span&gt;All-Time&lt;/span&gt;&lt;span&gt;This Month&lt;/span&gt;&lt;span&gt;Today&lt;/span&gt;&lt;/div&gt;`;
+        const rankingHtml=rankedTypes.map((item,index)=>{
+          const monthCount=Math.max(0,Number(monthByType[item.key])||0);
+          const dayCount=Math.max(0,Number(dayByType[item.key])||0);
+          const overallShare=item.value/total*100;
+          const monthShare=monthTotal?monthCount/monthTotal*100:0;
+          const dayShare=dayTotal?dayCount/dayTotal*100:0;
+          const segment=(count,share)=>`&lt;div class=&quot;dashboard-rank-segment&quot;&gt;&lt;span class=&quot;dashboard-rank-track&quot;&gt;&lt;span class=&quot;dashboard-rank-fill&quot; style=&quot;width:${share.toFixed(2)}%;background:${item.color}&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;dashboard-rank-value&quot;&gt;&lt;strong&gt;${count.toLocaleString(&quot;en-US&quot;)}&lt;/strong&gt;&lt;span&gt;${share.toFixed(1)}%&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;`;
+          return `&lt;div class=&quot;dashboard-rank-row${index===0?&quot; is-top&quot;:&quot;&quot;}&quot; title=&quot;${escapeHtml(item.name)} · All-Time ${item.value} (${overallShare.toFixed(1)}%) · This Month ${monthCount} (${monthShare.toFixed(1)}%) · Today ${dayCount} (${dayShare.toFixed(1)}%)&quot;&gt;&lt;div class=&quot;dashboard-rank-name&quot;&gt;&lt;span class=&quot;dashboard-rank-dot&quot; style=&quot;background:${item.color}&quot;&gt;&lt;/span&gt;&lt;span class=&quot;dashboard-rank-label&quot;&gt;${escapeHtml(item.name)}&lt;/span&gt;&lt;/div&gt;${segment(item.value,overallShare)}${segment(monthCount,monthShare)}${segment(dayCount,dayShare)}&lt;/div&gt;`;
         }).join(&quot;&quot;);
-        $(&quot;dashboardBody&quot;).innerHTML=`&lt;div class=&quot;dashboard-visual-grid&quot;&gt;&lt;section class=&quot;modal-card dashboard-visual-card dashboard-ranking-card&quot;&gt;&lt;div class=&quot;dashboard-overview-head&quot;&gt;&lt;div class=&quot;dashboard-total-block&quot;&gt;&lt;span&gt;ALL-TIME TOTAL&lt;/span&gt;&lt;strong&gt;${total.toLocaleString(&quot;en-US&quot;)}&lt;/strong&gt;&lt;/div&gt;&lt;div class=&quot;dashboard-summary-metrics&quot;&gt;${summaryMetrics.join(&quot;&quot;)}&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;dashboard-rank-list&quot; aria-label=&quot;Copy to Excel category ranking&quot;&gt;${rankingHtml}&lt;/div&gt;&lt;/section&gt;&lt;/div&gt;`;
+        $(&quot;dashboardBody&quot;).innerHTML=`&lt;div class=&quot;dashboard-visual-grid&quot;&gt;&lt;section class=&quot;modal-card dashboard-visual-card dashboard-ranking-card&quot;&gt;&lt;div class=&quot;dashboard-overview-head&quot;&gt;&lt;div class=&quot;dashboard-total-block dashboard-summary-metric&quot;&gt;&lt;span&gt;All-Time Total&lt;/span&gt;&lt;strong&gt;${total.toLocaleString(&quot;en-US&quot;)}&lt;/strong&gt;&lt;/div&gt;&lt;div class=&quot;dashboard-summary-metrics&quot;&gt;${summaryMetrics.join(&quot;&quot;)}&lt;/div&gt;&lt;/div&gt;${rankingHeader}&lt;div class=&quot;dashboard-rank-list&quot; aria-label=&quot;Copy to Excel category ranking by all-time, current month and today&quot;&gt;${rankingHtml}&lt;/div&gt;&lt;/section&gt;&lt;/div&gt;`;
       }
-
       function dailyHistoryTotals(){const totals=new Map();visibleHistory().forEach(record=&gt;{const date=getEasternDateFromHistoryTime(record);if(!date)return;totals.set(date,(totals.get(date)||0)+Math.max(1,Number(record.count)||String(record.text||&quot;&quot;).split(&quot;\n&quot;).filter(Boolean).length));});return Array.from(totals,([date,value])=&gt;({date,value})).sort((a,b)=&gt;a.date.localeCompare(b.date));}
       $(&quot;dashboardBody&quot;)?.addEventListener(&quot;click&quot;,event=&gt;{if(!event.target.closest(&quot;[data-daily-return]&quot;))return;dashboardDailyMode=false;syncDailyTotalButton();renderDashboard();});
       function renderDailyTotals(){dashboardDailyMode=true;syncDailyTotalButton();const rows=dailyHistoryTotals();if(!rows.length){$(&quot;dashboardBody&quot;).innerHTML='&lt;section class=&quot;modal-card daily-total-empty&quot;&gt;&lt;div class=&quot;daily-total-head&quot;&gt;&lt;button class=&quot;button secondary small daily-total-return&quot; data-daily-return=&quot;1&quot; type=&quot;button&quot;&gt;RETURN&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;empty-output dashboard-empty&quot;&gt;No daily Copy to Excel data yet.&lt;/div&gt;&lt;/section&gt;';return;}const sum=rows.reduce((total,row)=&gt;total+Math.max(0,Number(row.value)||0),0),maximum=Math.max(1,...rows.map(x=&gt;x.value)),average=sum/rows.length,averageHeight=Math.max(0,Math.round(average/maximum*145));const bars=rows.map(x=&gt;{const ratio=Math.max(0,Math.min(1,x.value/maximum)),height=Math.max(6,Math.round(ratio*145)),color=x.value&gt;average?&quot;#2f7ed8&quot;:&quot;#aeb4bc&quot;;const [y,m,d]=x.date.split(&quot;-&quot;);return `&lt;div class=&quot;daily-total-item&quot;&gt;&lt;div class=&quot;daily-total-stage&quot;&gt;&lt;div class=&quot;daily-total-bar&quot; style=&quot;height:${height}px;--dashboard-bar-color:${color}&quot; title=&quot;${m}/${d}/${y}: ${x.value}&quot;&gt;&lt;span class=&quot;daily-total-number&quot;&gt;${x.value}&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;daily-total-label&quot;&gt;${m}/${d}&lt;/div&gt;&lt;/div&gt;`;}).join(&quot;&quot;);$(&quot;dashboardBody&quot;).innerHTML=`&lt;section class=&quot;modal-card daily-total-chart&quot;&gt;&lt;div class=&quot;daily-total-head&quot;&gt;&lt;button class=&quot;button secondary small daily-total-return&quot; data-daily-return=&quot;1&quot; type=&quot;button&quot;&gt;RETURN&lt;/button&gt;&lt;h3 class=&quot;daily-total-title&quot;&gt;&lt;span&gt;Daily Copy to Excel Total&lt;/span&gt;&lt;span class=&quot;daily-total-sum&quot;&gt;SUM: ${sum}&lt;/span&gt;&lt;/h3&gt;&lt;/div&gt;&lt;div class=&quot;daily-total-bars&quot;&gt;&lt;div class=&quot;dashboard-average-line&quot; style=&quot;--average-height:${averageHeight}px&quot;&gt;&lt;span&gt;AVG ${average.toFixed(1)}&lt;/span&gt;&lt;/div&gt;${bars}&lt;/div&gt;&lt;/section&gt;`;}
