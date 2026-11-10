@@ -11119,23 +11119,23 @@ const categoryNames = {
       function renderDashboard(){
         dashboardDailyMode=false;
         syncDailyTotalButton();
-        const types=dashboardCategoryItems(),total=types.reduce((sum,item)=>sum+item.value,0);
+        const types=dashboardCategoryItems(),total=types.reduce((sum,item)=&gt;sum+item.value,0);
         if(!types.length||!total){$(&quot;dashboardBody&quot;).innerHTML='&lt;div class=&quot;empty-output dashboard-empty&quot;&gt;No Copy to Excel data yet.&lt;/div&gt;';return;}
-        const rankedTypes=[...types].sort((a,b)=>b.value-a.value||a.name.localeCompare(b.name));
+        const rankedTypes=[...types].sort((a,b)=&gt;b.value-a.value||a.name.localeCompare(b.name));
         const today=getLocalToday(),month=today.slice(0,7),historyRows=visibleHistory();
         const monthByType=Object.create(null),dayByType=Object.create(null);
-        historyRows.forEach(record=>{
+        historyRows.forEach(record=&gt;{
           const date=getEasternDateFromHistoryTime(record);
-          const rawType=String(record.typeKey||Object.keys(categoryNames).find(key=>String(categoryNames[key]).toLowerCase()===String(record.type||&quot;&quot;).toLowerCase())||&quot;&quot;).toLowerCase();
+          const rawType=String(record.typeKey||Object.keys(categoryNames).find(key=&gt;String(categoryNames[key]).toLowerCase()===String(record.type||&quot;&quot;).toLowerCase())||&quot;&quot;).toLowerCase();
           const key=rawType===&quot;fl&quot;?&quot;flooring&quot;:rawType;
           if(!key||!date)return;
-          const count=Math.max(1,Number(record.count)||String(record.text||&quot;&quot;).split(&quot;\\n&quot;).filter(Boolean).length);
+          const count=Math.max(1,Number(record.count)||String(record.text||&quot;&quot;).split(&quot;\n&quot;).filter(Boolean).length);
           if(date.slice(0,7)===month)monthByType[key]=(monthByType[key]||0)+count;
           if(date===today)dayByType[key]=(dayByType[key]||0)+count;
         });
-        const monthTotal=rankedTypes.reduce((sum,item)=>sum+(monthByType[item.key]||0),0);
-        const dayTotal=rankedTypes.reduce((sum,item)=>sum+(dayByType[item.key]||0),0);
-        const canadaCount=historyRows.filter(isCanadaHistoryRecord).reduce((sum,record)=>sum+Math.max(1,Number(record.count)||1),0);
+        const monthTotal=rankedTypes.reduce((sum,item)=&gt;sum+(monthByType[item.key]||0),0);
+        const dayTotal=rankedTypes.reduce((sum,item)=&gt;sum+(dayByType[item.key]||0),0);
+        const canadaCount=historyRows.filter(isCanadaHistoryRecord).reduce((sum,record)=&gt;sum+Math.max(1,Number(record.count)||1),0);
         const canadaShare=total?canadaCount/total*100:0;
         const summaryMetrics=[
           `&lt;div class=&quot;dashboard-summary-metric&quot;&gt;&lt;span&gt;Current Month Counts&lt;/span&gt;&lt;strong&gt;${monthTotal.toLocaleString(&quot;en-US&quot;)}&lt;/strong&gt;&lt;/div&gt;`,
@@ -11143,13 +11143,13 @@ const categoryNames = {
           `&lt;div class=&quot;dashboard-summary-metric dashboard-region-metric&quot; title=&quot;Canada is a regional subset and is not added to category totals&quot;&gt;&lt;span&gt;Canada Region&lt;/span&gt;&lt;strong&gt;${canadaCount.toLocaleString(&quot;en-US&quot;)}&lt;/strong&gt;&lt;small&gt;${canadaShare.toFixed(1)}% of total&lt;/small&gt;&lt;/div&gt;`
         ];
         const rankingHeader=`&lt;div class=&quot;dashboard-rank-header&quot;&gt;&lt;span&gt;Category&lt;/span&gt;&lt;span&gt;All-Time&lt;/span&gt;&lt;span&gt;This Month&lt;/span&gt;&lt;span&gt;Today&lt;/span&gt;&lt;/div&gt;`;
-        const rankingHtml=rankedTypes.map((item,index)=>{
+        const rankingHtml=rankedTypes.map((item,index)=&gt;{
           const monthCount=Math.max(0,Number(monthByType[item.key])||0);
           const dayCount=Math.max(0,Number(dayByType[item.key])||0);
           const overallShare=item.value/total*100;
           const monthShare=monthTotal?monthCount/monthTotal*100:0;
           const dayShare=dayTotal?dayCount/dayTotal*100:0;
-          const segment=(count,share)=>`&lt;div class=&quot;dashboard-rank-segment&quot;&gt;&lt;span class=&quot;dashboard-rank-track&quot;&gt;&lt;span class=&quot;dashboard-rank-fill&quot; style=&quot;width:${share.toFixed(2)}%;background:${item.color}&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;dashboard-rank-value&quot;&gt;&lt;strong&gt;${count.toLocaleString(&quot;en-US&quot;)}&lt;/strong&gt;&lt;span&gt;${share.toFixed(1)}%&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;`;
+          const segment=(count,share)=&gt;`&lt;div class=&quot;dashboard-rank-segment&quot;&gt;&lt;span class=&quot;dashboard-rank-track&quot;&gt;&lt;span class=&quot;dashboard-rank-fill&quot; style=&quot;width:${share.toFixed(2)}%;background:${item.color}&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;dashboard-rank-value&quot;&gt;&lt;strong&gt;${count.toLocaleString(&quot;en-US&quot;)}&lt;/strong&gt;&lt;span&gt;${share.toFixed(1)}%&lt;/span&gt;&lt;/span&gt;&lt;/div&gt;`;
           return `&lt;div class=&quot;dashboard-rank-row${index===0?&quot; is-top&quot;:&quot;&quot;}&quot; title=&quot;${escapeHtml(item.name)} · All-Time ${item.value} (${overallShare.toFixed(1)}%) · This Month ${monthCount} (${monthShare.toFixed(1)}%) · Today ${dayCount} (${dayShare.toFixed(1)}%)&quot;&gt;&lt;div class=&quot;dashboard-rank-name&quot;&gt;&lt;span class=&quot;dashboard-rank-dot&quot; style=&quot;background:${item.color}&quot;&gt;&lt;/span&gt;&lt;span class=&quot;dashboard-rank-label&quot;&gt;${escapeHtml(item.name)}&lt;/span&gt;&lt;/div&gt;${segment(item.value,overallShare)}${segment(monthCount,monthShare)}${segment(dayCount,dayShare)}&lt;/div&gt;`;
         }).join(&quot;&quot;);
         $(&quot;dashboardBody&quot;).innerHTML=`&lt;div class=&quot;dashboard-visual-grid&quot;&gt;&lt;section class=&quot;modal-card dashboard-visual-card dashboard-ranking-card&quot;&gt;&lt;div class=&quot;dashboard-overview-head&quot;&gt;&lt;div class=&quot;dashboard-total-block dashboard-summary-metric&quot;&gt;&lt;span&gt;All-Time Total&lt;/span&gt;&lt;strong&gt;${total.toLocaleString(&quot;en-US&quot;)}&lt;/strong&gt;&lt;/div&gt;&lt;div class=&quot;dashboard-summary-metrics&quot;&gt;${summaryMetrics.join(&quot;&quot;)}&lt;/div&gt;&lt;/div&gt;${rankingHeader}&lt;div class=&quot;dashboard-rank-list&quot; aria-label=&quot;Copy to Excel category ranking by all-time, current month and today&quot;&gt;${rankingHtml}&lt;/div&gt;&lt;/section&gt;&lt;/div&gt;`;
