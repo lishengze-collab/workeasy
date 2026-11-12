@@ -13524,6 +13524,72 @@ html.fl-mode body #progressMeta{
 #dashboardDialog .dashboard-combined-grid .period-number { font-weight: 800 !important; }
 #dashboardDialog .dashboard-combined-grid .daily-total-label,
 #dashboardDialog .dashboard-combined-grid .period-label { margin-top: 3px !important; }
+&lt;/style&gt;&lt;style id=&quot;dark-only-copy-preview-hover-fix&quot;&gt;
+/* COPY preview hover feedback: target the actual generated preview rows. */
+html.workeasy-theme-dark #outputFields &gt; .output-field,
+html.workeasy-theme-dark #flOutputFields &gt; .output-field {
+  transition: background-color .12s ease, border-color .12s ease, box-shadow .12s ease !important;
+}
+html.workeasy-theme-dark #outputFields &gt; .output-field:hover,
+html.workeasy-theme-dark #outputFields &gt; .output-field:focus-within,
+html.workeasy-theme-dark #flOutputFields &gt; .output-field:hover,
+html.workeasy-theme-dark #flOutputFields &gt; .output-field:focus-within {
+  background: #314a62 !important;
+  background-color: #314a62 !important;
+  background-image: none !important;
+  border: 1px solid #8eb4d8 !important;
+  color: #f7fbff !important;
+  -webkit-text-fill-color: #f7fbff !important;
+  box-shadow: inset 4px 0 0 #78a9d4, 0 0 0 1px rgba(120, 169, 212, .24) !important;
+}
+html.workeasy-theme-dark #outputFields &gt; .output-field:hover *,
+html.workeasy-theme-dark #outputFields &gt; .output-field:focus-within *,
+html.workeasy-theme-dark #flOutputFields &gt; .output-field:hover *,
+html.workeasy-theme-dark #flOutputFields &gt; .output-field:focus-within * {
+  color: #f7fbff !important;
+  -webkit-text-fill-color: #f7fbff !important;
+}
+html.workeasy-theme-dark #outputFields &gt; .output-field.manual-priority-field,
+html.workeasy-theme-dark #outputFields &gt; .output-field.business-priority-field,
+html.workeasy-theme-dark #flOutputFields &gt; .output-field.fl-highlight {
+  background: #3a3425 !important;
+  background-color: #3a3425 !important;
+  background-image: none !important;
+  color: #f5e7bb !important;
+  border-color: #8d7944 !important;
+}
+html.workeasy-theme-dark #outputFields &gt; .output-field.manual-priority-field:hover,
+html.workeasy-theme-dark #outputFields &gt; .output-field.business-priority-field:hover,
+html.workeasy-theme-dark #flOutputFields &gt; .output-field.fl-highlight:hover {
+  background: #57482b !important;
+  background-color: #57482b !important;
+  background-image: none !important;
+  color: #fff4d4 !important;
+  -webkit-text-fill-color: #fff4d4 !important;
+  border-color: #d0b16a !important;
+  box-shadow: inset 4px 0 0 #d0b16a, 0 0 0 1px rgba(208, 177, 106, .25) !important;
+}
+html.workeasy-theme-dark #outputFields &gt; .output-field.manual-priority-field:hover *,
+html.workeasy-theme-dark #outputFields &gt; .output-field.business-priority-field:hover *,
+html.workeasy-theme-dark #flOutputFields &gt; .output-field.fl-highlight:hover * {
+  color: #fff4d4 !important;
+  -webkit-text-fill-color: #fff4d4 !important;
+}
+html.workeasy-theme-dark #outputFields .field-value,
+html.workeasy-theme-dark #outputFields .field-value.editable,
+html.workeasy-theme-dark #flOutputFields .fl-preview-value {
+  color: #e7edf5 !important;
+  -webkit-text-fill-color: #e7edf5 !important;
+}
+html.workeasy-theme-dark #outputFields &gt; .output-field:hover .field-value,
+html.workeasy-theme-dark #outputFields &gt; .output-field:focus-within .field-value,
+html.workeasy-theme-dark #flOutputFields &gt; .output-field:hover .fl-preview-value,
+html.workeasy-theme-dark #flOutputFields &gt; .output-field:focus-within .fl-preview-value {
+  background: transparent !important;
+  background-color: transparent !important;
+  color: #f7fbff !important;
+  -webkit-text-fill-color: #f7fbff !important;
+}
 &lt;/style&gt;&lt;/body&gt;
 &lt;/html&gt;"></iframe>
 <iframe class="fusion-frame inactive" hidden="" id="noteWorkspace" inert="" srcdoc="&lt;!DOCTYPE html&gt;
@@ -20126,7 +20192,22 @@ window.__multiFormTest={version:&#39;1.0-test&#39;,newFormUid,formsFor,migrateFo
 })();
 &lt;/script&gt;
 
-&lt;/body&gt;&lt;/html&gt;
+&lt;style id=&quot;dark-only-form-prefix-fix&quot;&gt;
+/* Dark-mode correction for the fixed 322- prefix beside FORM #. */
+html.workeasy-theme-dark #formEditor .prefix-wrap {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+html.workeasy-theme-dark #formEditor .prefix-wrap .prefix {
+  background: #2b3b4e !important;
+  background-color: #2b3b4e !important;
+  background-image: none !important;
+  color: #f3f7fb !important;
+  -webkit-text-fill-color: #f3f7fb !important;
+  border-color: #607991 !important;
+  box-shadow: none !important;
+}
+&lt;/style&gt;&lt;/body&gt;&lt;/html&gt;
 " tabindex="-1" title="Quick Report Workspace"></iframe>
 <iframe class="fusion-frame inactive" hidden="" id="estOutWorkspace" srcdoc="&lt;!DOCTYPE html&gt;
 
